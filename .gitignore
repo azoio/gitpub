@@ -1,0 +1,9 @@
+.idea
+/vendor
+*.bat
+/composer.phar
+/app.yaml
+/.env
+/php.ini
+/.phpstorm.meta.php
+/_ide_helper.php
