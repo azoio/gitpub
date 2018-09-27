@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: nginx:1.10
+    image: nginx:1.10-alpine
     volumes:
     - ./:/var/www
     - ./.docker/nginx/ssl:/etc/nginx/ssl
@@ -24,6 +24,6 @@ services:
     - MEMCACHED_HOST=memcached
     - XDEBUG_REMOTE_HOST=host.docker.internal
   memcached:
-    image: memcached:1.5
+    image: memcached:1.5-alpine
     ports:
     - 11211:11211
