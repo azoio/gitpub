@@ -905,6 +905,10 @@ p {
     margin-top: 1.6em;
 }
 
+.post img {
+    max-width: 100%;
+}
+
 /**
 
  */
