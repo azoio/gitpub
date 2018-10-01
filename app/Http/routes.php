@@ -14,7 +14,7 @@ $app->group(
         );
         $app->get(
             '{branch}/{path}',
-            App\Http\Controllers\PagesController::class . '@page'
+            ['as' => 'page', 'uses' => App\Http\Controllers\PagesController::class . '@page']
         );
         $app->get(
             '{branch}',

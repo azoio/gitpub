@@ -2,6 +2,7 @@
 /**
  * @var string $css
  * @var string $lang
+ * @var string $path
  **/
 ?>
 @inject('cssLoader','App\Helpers\CssLoader')
@@ -36,9 +37,15 @@
         <span class="icon">+</span>
     </span>
     <ul class="sidepanel-menu">
-        <li><a class="navbar-link" href="{{ route('index', ['branch' => 'es']) }}">Spanish</a></li>
-        <li><a class="navbar-link" href="{{ route('index', ['branch' => 'ko']) }}">Korean</a></li>
-        <li><a class="navbar-link" href="{{ route('index', ['branch' => 'ru']) }}">Russian</a></li>
+        @if(empty($path))
+            <li><a class="navbar-link" href="{{ route('index', ['branch' => 'es']) }}">Spanish</a></li>
+            <li><a class="navbar-link" href="{{ route('index', ['branch' => 'ko']) }}">Korean</a></li>
+            <li><a class="navbar-link" href="{{ route('index', ['branch' => 'ru']) }}">Russian</a></li>
+        @else
+            <li><a class="navbar-link" href="{{ route('page', ['branch' => 'es', 'path' => $path]) }}">Spanish</a></li>
+            <li><a class="navbar-link" href="{{ route('page', ['branch' => 'ko', 'path' => $path]) }}">Korean</a></li>
+            <li><a class="navbar-link" href="{{ route('page', ['branch' => 'ru', 'path' => $path]) }}">Russian</a></li>
+        @endif
     </ul>
 </amp-sidebar>
 

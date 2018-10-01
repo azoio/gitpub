@@ -68,7 +68,8 @@ class PagesController
     {
         return view('post', [
             'content' => $this->loadContent($branch, $path),
-            'lang'    => $branch
+            'lang'    => $branch,
+            'path'    => $path,
         ]);
     }
 
