@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\UseCases\GitHubRepo;
-use GrahamCampbell\GitHub\GitHubManager;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application;
 
@@ -20,8 +19,20 @@ class AppServiceProvider extends ServiceProvider
             $app->configure('githubrepo');
             $config = $app->make('config')->get('githubrepo');
 
+            $client = \Github\Client::createWithHttpClient(
+                \Http\Adapter\Guzzle6\Client::createWithConfig([
+                    'verify' => false,
+                ])
+            );
+
+            $client->authenticate(
+                $config['repo_user'],
+                $config['repo_name'],
+                \Github\Client::AUTH_HTTP_PASSWORD
+            );
+
             return new GitHubRepo(
-                $app->make(GitHubManager::class),
+                $client,
                 $config['repo_user'],
                 $config['repo_name']
             );

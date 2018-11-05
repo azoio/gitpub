@@ -5,13 +5,6 @@ use Shpasser\GaeSupportLumen\Foundation\Application;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
-try {
-    (new Dotenv\Dotenv(__DIR__ . '/../'))->load();
-}
-catch (Dotenv\Exception\InvalidPathException $e) {
-    //
-}
-
 $prefix = (isset($_SERVER['CURRENT_MODULE_ID']) ? $_SERVER['CURRENT_MODULE_ID'] . '/' : '')
     . (isset($_SERVER['CURRENT_VERSION_ID']) ? $_SERVER['CURRENT_VERSION_ID'] . '/' : '');
 
@@ -98,10 +91,10 @@ if ($app->environment() !== 'production') {
 
 $app->register(\Shpasser\GaeSupportLumen\GaeSupportServiceProvider::class);
 $app->register(\GrahamCampbell\GitHub\GitHubServiceProvider::class);
-$app->register(\Superbalist\LaravelGoogleCloudStorage\GoogleCloudStorageServiceProvider::class);
+$app->register(\App\Providers\GoogleCloudStorageServiceProvider::class);
 
 
- $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -116,8 +109,6 @@ $app->register(\Superbalist\LaravelGoogleCloudStorage\GoogleCloudStorageServiceP
 |
 */
 
-$app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
-    require __DIR__ . '/../app/Http/routes.php';
-});
+require __DIR__ . '/../app/Http/routes.php';
 
 return $app;

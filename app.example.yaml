@@ -15,13 +15,24 @@ handlers:
   script: public/index.php
 
 skip_files:
-- ^(.*/)?-.*$
-- ^(.*/)?#.*#$
 - ^(.*/)?.*~$
-- ^(.*/)?.*\.py[co]$
-- ^(.*/)?.*/RCS/.*$
-- ^(.*/)?\.(?!env).*$
-- ^(.*/)?node_modules.*$
 - ^(.*/)?_ide_helper\.php$
-- ^(.*/)?\.DS_Store$
 - ^(.*/)?storage/
+
+env_variables:
+  APP_TIMEZON: America/New_York
+  GAE_SKIP_GCS_INIT: true
+  CACHE_DRIVER: memcached
+  COMPILED_PATH: cachefs://framework/views
+
+  GITHUB_WEBHOOK_SECRET_TOKEN:
+  GITHUB_USERNAME:
+  GITHUB_PASSWORD:
+  GITHUB_REPO_USER:
+  GITHUB_REPO_NAME:
+
+  GOOGLE_CLOUD_PROJECT_ID:
+  GOOGLE_CLOUD_KEY_FILE: private/{Your key file name}.json
+  GOOGLE_CLOUD_STORAGE_BUCKET:
+
+  GA_ACCOUNT_ID:

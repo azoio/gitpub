@@ -3,7 +3,7 @@
 namespace App\UseCases;
 
 
-use GrahamCampbell\GitHub\GitHubManager;
+use Github\Client;
 
 class GitHubRepo
 {
@@ -12,11 +12,11 @@ class GitHubRepo
     private $github;
 
     /**
-     * @param GitHubManager $github
+     * @param Client $github
      * @param string $gitRepoUser
      * @param string $gitRepoName
      */
-    public function __construct(GitHubManager $github, $gitRepoUser, $gitRepoName)
+    public function __construct(Client $github, $gitRepoUser, $gitRepoName)
     {
         $this->github      = $github;
         $this->gitRepoUser = $gitRepoUser;
@@ -42,7 +42,7 @@ class GitHubRepo
     {
         $result = [];
         foreach ($this->getBranches() as $branch) {
-            $branch = $branch['name'];
+            $branch          = $branch['name'];
             $result[$branch] = [];
             foreach ($this->getContents($branch) as $content) {
                 if ($content['type'] !== 'file') {

@@ -28,6 +28,6 @@ return [
     |
     */
 
-    'compiled' => env('COMPILED_PATH', storage_path().'/framework/views'),
+    'compiled' => env('COMPILED_PATH', '') ?: storage_path() . '/framework/views',
 
 ];

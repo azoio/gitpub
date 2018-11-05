@@ -3,7 +3,8 @@
     "sort-packages": true,
     "platform": {
       "php": "5.5.9"
-    }
+    },
+    "process-timeout": 0
   },
   "require": {
     "php": ">=5.5.9",
@@ -22,5 +23,8 @@
     "psr-4": {
       "App\\": "app/"
     }
+  },
+  "scripts": {
+    "serve": "dev_appserver.py --dev_appserver_log_level=warning --env_var APP_ENV=local --env_var APP_DEBUG=true --env_var COMPILED_PATH= --php_remote_debugging true ."
   }
 }
