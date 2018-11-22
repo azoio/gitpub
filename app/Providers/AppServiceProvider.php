@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
             );
 
             $client->authenticate(
-                $config['repo_user'],
-                $config['repo_name'],
+                $config['username'],
+                $config['password'],
                 \Github\Client::AUTH_HTTP_PASSWORD
             );
 
