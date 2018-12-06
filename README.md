@@ -1,3 +1,4 @@
+![Gitpub](https://azoio.github.io/gitpub/public/logo.png)
 
 ## Setup
 
